@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Guess</title>
+    <style>
+    body{ background-color:rgb(201, 171, 248);font-family:Trebuchet MS, sans-serif;font-size: 25px;font-weight: bold;}
+        h1{text-align: center;font-family:Trebuchet MS, sans-serif;font-size:45px;text-shadow: 2px 2px #dd8cd8;background-color:#eee1f7; }
+        h4{margin-left:70%;font-family:Trebuchet MS, sans-serif;text-shadow: 2px 2px #dd8cd8;font-size: 19px;}
+        body{ background-color:rgb(201, 171, 248);font-family:Trebuchet MS, sans-serif;font-size: 25px;font-weight: bold;}
+        ul{list-style-type:none;float:left;margin-top:25px;}
+        ul li{display: inline-block;}
+        ul li a{text-decoration:none;color:#fff;padding: 5px 20px;border: 1px solid transparent;background-color:#000;transition:0.6s ease;font-size:20px;}
+        ul li a:hover{background-color:#7DEDFF;color:#000;border:2px solid black}
+        ul li a.active{border:2px solid black;background-color:#7DEDFF;color:#000;} 
+        #title{margin-left:40%;font-size: 35px;}
+        #hori,#vert,#joined,#group,#rnc{font-size:28px;font-family:Trebuchet MS, sans-serif;font-weight: bold;border: 2px solid #000;background-color:rgb(69,69,69);color:seashell;}
+        #bro{font-size:28px;font-family:Trebuchet MS, sans-serif;font-weight: bold;border: 2px solid #000;background-color:rgb(69,69,69);color:seashell;}
+        #quest{margin-left: 20%;height:400px;width:400px;}
+        img{margin-left:23%;margin-top:3%;-webkit-filter: drop-shadow(5px 5px 5px #222222);filter: drop-shadow(5px 5px 5px #222222)}
+        #bro{margin-left:36%;margin-top:2%;font-size:28px;font-family:Trebuchet MS, sans-serif;font-weight: bold;border: 2px solid #000;background-color:rgb(69,69,69);color:seashell;height:50px;width:150px;}
+        #title{margin-left: 45%;}
+            </style>
+</head>
+<body>
+    <h1>PL/SQL</h1>
+    <h4>By Sejal Deshpande(20302F0023) </h4>
+    <hr style="height:2px;border-width:0;color:black;background-color:black">
+    <p id="title"><u>Guess the PL/SQL Code</u></p>
+    <ul>
+        <li><a href="plsql.html">&nbsp;&nbsp;&nbsp;&nbsp;PL/SQL&nbsp;&nbsp;&nbsp;</a></li><br><br>
+        <li><a href="flash.html">&nbsp;FlashCards</a></li><br><br>
+        <li><a class="active" href="view.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quiz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li><br><br>
+        </ul>
+            <img src="images/1.jpeg" id="quest"><br>
+            <script>
+                 
+    b= document.getElementById('quest');
+    var arr=["images/1.jpeg","images/2.jpeg","images/3.jpeg","images/4.jpeg","images/5.jpeg","images/6.jpeg"]
+    var arrindex=1;
+    function question()
+    {
+    b.setAttribute("src",arr[arrindex]);
+      arrindex++;
+      b.style.width='400px'
+      b.style.height='400px'
+      if(arrindex>5) 
+     {arrindex=0;}  
+    }
+    
+</script>
+<button id="bro" onclick="question()">Next</button>
+</body>
+</html>

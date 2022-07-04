@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <title>PL/SQL</title>
+    <style>
+        body{ background-color:rgb(201, 171, 248);font-family:Trebuchet MS, sans-serif;font-size: 25px;font-weight: bold;}
+        h1{text-align: center;font-family:Trebuchet MS, sans-serif;font-size:45px;text-shadow: 2px 2px #dd8cd8;background-color:#eee1f7; }
+        h4{margin-left:70%;font-family:Trebuchet MS, sans-serif;text-shadow: 2px 2px #dd8cd8;font-size: 19px;}
+        #tab{margin-left:15%;font-size: 25px;font-weight: bold;}
+        input{font-size: 20px;font-weight: bold;}
+        #valn,#vala,#valc,#valn1,#valp,#vals,#valf{height:30px;width:140px;}
+        ul{list-style-type:none;float:left;margin-top:25px;}
+        ul li{display: inline-block;}
+        ul li a{text-decoration:none;color:#fff;padding: 5px 20px;border: 1px solid transparent;background-color:#000;transition:0.6s ease;font-size:20px;}
+        ul li a:hover{background-color:#7DEDFF;color:#000;border:2px solid black}
+        ul li a.active{border:2px solid black;background-color:#7DEDFF;color:#000;} 
+        #views{margin-left:15%;}
+        .name,.city,.age,.fav,.name_1,.prof,.salary{width:150px;height:40px;text-align: center;border: 1px solid #000;background-color:azure;}
+        #blah,#valn,#vala,#valf,#vals,#valc,#valn1,#valp{width:150px;height:40px;text-align: center;border: 1px solid #000;background-color:azure;}
+        #insert,#insert_1{margin-left:70%;width:150px;height:40px;text-align: center;border: 1px solid #000;background-color:rgb(236,172,112);}
+        #hori1,#hori2,#join1,#join2,#vert1,#vert2,#g1,#g2,#rnc1,#rnc2,#check{width:150px;height:40px;text-align: center;border: 1px solid #000;background-color:azure;}
+        #check{background-color: rgb(236,172,112);}
+        #hvc,#vvc,#gvc,#jvc,#rcvc{color: #DA0037;}
+    </style>
+</head>
+<body>
+<h1>PL/SQL</h1>  
+<h4>By Sejal Deshpande(20302F0023)</h4>
+<hr style="height:2px;border-width:0;color:black;background-color:black">
+<form>
+    <ul>
+        <li><a class="active" href="plsql.html">&nbsp;&nbsp;&nbsp;&nbsp;PL/SQL&nbsp;&nbsp;&nbsp;</a></li><br><br>
+        <li><a href="flash.html">&nbsp;FlashCards</a></li><br><br>
+        <li><a href="view.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quiz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li><br><br>
+        </ul>
+<p style="margin-left:15%;font-size: 35px;"><u>Blocks</u></p>
+<div id="views"><p style="font-size:30px">1. FOR loop</p>
+Create a For loop to run from 1 to 10 and Commit the Transaction:
+    <p>DECLARE<br>
+        x NUMBER := 100;<br>
+     BEGIN<br><input type="text" id="hori1"><br>
+     IF MOD(i,2) = 0 THEN<br>
+         INSERT INTO demo VALUES (i, x, 'i is even');<br>
+      ELSE<br>
+         INSERT INTO demo VALUES (i, x, 'i is odd');<br>
+      END IF;<br>
+      x := x + 100;<br>
+   END LOOP;<br>
+     <input type="text" id="hori2"><br>END;<br>
+    <input type="button"  onclick="Hori()" value="Check" id="check"></p>
+<p id="hvc"></p><br>
+<p style="font-size:30px">2. Cursors</p>
+Create and close cursor c1:
+<p>DECLARE<br><input type="text" id="vert1"><br>
+    SELECT ename, empno, sal FROM emp<br>
+    ORDER BY sal DESC;<br>
+    my_ename VARCHAR2(10);<br>
+    my_empno NUMBER(4);<br>
+    my_sal   NUMBER(7,2);<br>
+    BEGIN<br>
+   OPEN c1;<br>
+   FOR i IN 1..5 LOOP<br>
+      FETCH c1 INTO my_ename, my_empno, my_sal;<br>
+      EXIT WHEN c1%NOTFOUND;<br>
+      INSERT INTO temp VALUES (my_sal, my_empno, my_ename);<br>
+      COMMIT;<br>
+   END LOOP;<br>
+    <input type="text" id="vert2"><br>
+    END;<br>
+    <input type="button"  onclick="Vert()" value="Check" id="check"></p>
+<p id="vvc"></p><br>
+<p style="font-size:30px">3. Loops</p>
+Write a query that lists ename, empno, sal from the table emp in descending order and<br>
+to exit when cursor is on the 6th row or when cursor position is not found:
+<p>DECLARE<br>
+    CURSOR c1 is<br>
+    <input type="text" id="join1"><br>
+    my_ename CHAR(10);<br>
+    my_empno NUMBER(4);<br>
+    my_sal   NUMBER(7,2);<br>
+ BEGIN<br>
+    OPEN c1;<br>
+    LOOP<br>
+       FETCH c1 INTO my_ename, my_empno, my_sal;<br>
+    <input type="text" id="join2"><br>
+    INSERT INTO temp VALUES (my_sal, my_empno, my_ename);<br>
+      COMMIT;<br>
+   END LOOP;<br>
+   CLOSE c1;<br>
+END;<br>
+    <input type="button"  onclick="Join()" value="Check" id="check"></p>
+<p id="jvc"></p><br>
+<p style="font-size:30px">4. Reversing String</p>
+Initialize len with length of str1 and print reverse of String
+<p>DECLARE<br>
+    str1 varchar2(50):='&str';<br>
+    str2 varchar2(50);<br>
+    len number;<br>
+    i number;<br>
+     
+    BEGIN<br>
+    len:=<input type="text" id="g1"><br>
+    FOR i IN REVERSE 1..len<br>
+LOOP<br>
+str2:=str2 || substr(str1,i,1);<br>
+END LOOP;<br>
+<input type="text" id="g2"><br>
+END;<br> 
+    <input type="button"  onclick="Group()" value="Check" id="check"></p>
+<p id="gvc"></p><br>
+<p style="font-size:30px">5. Exception Handling</p>
+Add an exception for zero division error:
+<p>
+    DECLARE<br>
+   numerator   NUMBER;<br>
+   denominator NUMBER;<br>
+   the_ratio   NUMBER;<br>
+   lower_limit CONSTANT NUMBER := 0.72;<br>
+   samp_num    CONSTANT NUMBER := 132;<br>
+BEGIN<br>
+   SELECT x, y INTO numerator, denominator FROM result_table<br>
+      WHERE sample_id = samp_num;<br>
+   the_ratio := numerator/denominator;<br>
+   IF the_ratio > lower_limit THEN<br>
+      INSERT INTO ratio VALUES (samp_num, the_ratio);<br>
+   ELSE<br>
+      INSERT INTO ratio VALUES (samp_num, -1);<br>
+   END IF;<br>
+   COMMIT;<br>
+EXCEPTION<br>
+WHEN&nbsp;
+    <input type="text" id="rnc1">&nbsp;THEN<br>
+    INSERT INTO ratio VALUES (samp_num, 0);<br>
+    COMMIT;<br>
+ WHEN OTHERS THEN<br>
+     <input type="text" id="rnc2"> <br>
+     END;<br>
+    <input type="button"  onclick="RNC()" value="Check" id="check"></p>
+<p id="rcvc"></p><br></div>
+</form> 
+<script>
+function Hori()
+    {var val5=document.getElementById("hori1").value.toLowerCase();
+    var val6=document.getElementById("hori2").value.toLowerCase();
+    if(val5=="for i in 1..10 loop" && val6=="commit")
+    {document.getElementById("hvc").innerHTML="Block Executed";}
+    else{
+        document.getElementById("hvc").innerHTML="Error";
+    }}
+
+function Vert()
+    {var val7=document.getElementById("vert1").value.toLowerCase();
+    var val8=document.getElementById("vert2").value.toLowerCase();
+    if(val7=="cursor c1 is" && val8=="close c1")
+    {document.getElementById("vvc").innerHTML="Block Executed";}
+    else{
+        document.getElementById("vvc").innerHTML="Error";
+    }}
+
+ function Join()
+    {var val12=document.getElementById("join1").value.toLowerCase();
+    var val13=document.getElementById("join2").value.toLowerCase();
+    if(val12=="select  ename, empno, sal from emp order by desc" && val13=="exit when (c1%rowcount > 5) or (c1%notfound)")
+    {document.getElementById("jvc").innerHTML="Block Executed";}
+    else{
+        document.getElementById("jvc").innerHTML="Error";
+    }}
+
+function Group()
+    {var val12=document.getElementById("g1").value.toLowerCase();
+    var val13=document.getElementById("g2").value.toLowerCase();
+    if(val12=="length(str1)" && (val13=="dbms_output.put_line(reverse of string is:||str2"))
+    {document.getElementById("gvc").innerHTML="Block Executed";}
+    else{
+        document.getElementById("gvc").innerHTML="Error";
+    }}
+
+function RNC()
+    {var val12=document.getElementById("rnc1").value.toLowerCase();
+    var val13=document.getElementById("rnc2").value.toLowerCase();
+    if(val12=="zero_divide" && (val13=="rollback"))
+    {document.getElementById("rcvc").innerHTML="Block Executed";}
+    else{
+        document.getElementById("rcvc").innerHTML="Error";
+    }}
+    </script>
+</body>
+</html>

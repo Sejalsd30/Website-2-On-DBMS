@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>FlashCards</title>
+    <style>
+        body{ background-color:rgb(201, 171, 248);font-family:Trebuchet MS, sans-serif;font-size: 25px;font-weight: bold;}
+        h1{text-align: center;font-family:Trebuchet MS, sans-serif;font-size:45px;text-shadow: 2px 2px #dd8cd8;background-color:#eee1f7; }
+        h4{margin-left:70%;font-family:Trebuchet MS, sans-serif;text-shadow: 2px 2px #dd8cd8;font-size: 19px;}
+        ul{list-style-type:none;float:left;margin-top:25px;}
+        ul li{display: inline-block;}
+        ul li a{text-decoration:none;color:#fff;padding: 5px 20px;border: 1px solid transparent;background-color:#000;transition:0.6s ease;font-size:20px;}
+        ul li a:hover{background-color:#7DEDFF;color:#000;border:2px solid black}
+        ul li a.active{border:2px solid black;background-color:#7DEDFF;color:#000;} 
+        #mainImage1{margin-left: 20%;height:200px;width:800px;}
+        #title{margin-left: 45%;font-size: 38px;}
+      #bro{font-size:28px;font-family:Trebuchet MS, sans-serif;font-weight: bold;margin-left: 60%;margin-bottom:130px;border: 2px solid #000;background-color:rgb(69,69,69);color:seashell;height:50px;width:150px;}
+      img {
+  -webkit-filter: drop-shadow(5px 5px 5px #222222);
+  filter: drop-shadow(5px 5px 5px #222222);
+}
+    </style>
+</head>
+<body>
+    <h1>PL/SQL</h1>
+    <h4>By Sejal Deshpande(20302F0023) </h4>
+    <hr style="height:2px;border-width:0;color:black;background-color:black">
+    <ul>
+        <li><a href="plsql.html">&nbsp;&nbsp;&nbsp;&nbsp;PL/SQL&nbsp;&nbsp;&nbsp;</a></li><br><br>
+        <li><a class="active" href="flash.html">&nbsp;FlashCards</a></li><br><br>
+        <li><a href="view.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quiz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li><br><br>
+        </ul>
+            <p id="title"><u>Flashcards</u></p>
+            <img src="images/dbms-0.png" id = "mainImage1"><br><br>
+<script> 
+myImage1= document.getElementById('mainImage1');
+var imageArray1 = ["images/dbms-0.png","images/dbms-1.png","images/dbms-2.png","images/dbms-3.png","images/dbms-4.png","images/dbms-5.png","images/dbms-6.png","images/dbms-7.png","images/dbms-8.png","images/dbms-9.png"]
+var imageIndex1 = 1;
+function changeImage1()
+{
+myImage1.setAttribute("src", imageArray1[imageIndex1]);
+imageIndex1++;
+myImage1.style.width='800px'
+myImage1.style.height='200px'
+if(imageIndex1>9) 
+{imageIndex1 = 0;}
+}
+
+</script>
+<button id="bro" onclick="changeImage1();">Next</button>
+</body>
+</html>
